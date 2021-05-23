@@ -1,0 +1,12 @@
+body{
+    background-color: powderblue;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+    width: 75%;
+    border: solid purple ;
+    flex-wrap: wrap;
+}
+.get-numbers{
+    font-style: italic;
+}
