@@ -1,3 +1,6 @@
+/************* Age in Days calculation ***********/
+
+// calculate the days
 function ageInDays(){
     var userYear = prompt("What is your year of birth?");
     var ageInDays = (2021-userYear)*365;
@@ -7,15 +10,24 @@ function ageInDays(){
     h1.appendChild(textToDisp);
     document.getElementById("flex-box-result").appendChild(h1);
 }
+// reset the div
 function reset(){
     document.getElementById("ageInDays").remove();
 }
+
+/************* Cat Generator method ***********/
+
+// create random images
 function createImage(){
     var img = document.createElement("img");
     img.src="http://thecatapi.com/api/images/get?format=src&type=gif&size=small";
     var div=document.getElementById("flex-getn-cat")
     div.appendChild(img);
 }
+
+/************* Rock, Paper & scissors game methods ***********/
+
+//initialize the human & Bot choice variables
 function rpsGame(choice){
     var humanChoice, botChoice;
     humanChoice = choice.id;
@@ -25,11 +37,14 @@ function rpsGame(choice){
     displayResult(humanChoice,botChoice,message);
 }
 
+//get the bot choice randomly
 function getBotChoice(){
     var choices = {0:'rock', 1:'paper', 2:'scissors'};
     var rndChoice = Math.floor(Math.random()*3);
     return choices[rndChoice];
 }
+
+//Decide the winner from human & bot choice
 function decideWinner(humanChoice,botChoice){
     var dbData = {
         'rock' : {'scissors':1, 'rock':0.5, 'paper':0},
@@ -40,11 +55,15 @@ function decideWinner(humanChoice,botChoice){
     var botScore = dbData[botChoice][humanChoice];
     return [humScore];
 }
+
+//Initialize the message for win and loss
 function getMessage(winnerMsg){
     var msg = {1:'you won!',0.5:'Tie',0:'you lost!'};
     var msgColor = {1:'green',0.5:'yellow',0:'red'};
     return [msg[winnerMsg],msgColor[winnerMsg]]
 }
+
+//display the images based on result
 function displayResult(humanChoice,botChoice,message){
     var imgDatabase={
         'rock': document.getElementById('rock').src,
@@ -68,6 +87,9 @@ function displayResult(humanChoice,botChoice,message){
     document.getElementById('flex-gen-game').appendChild(botDiv);
 }
 
+/************* Change the color of the all buttons ***********/
+
+//Initialize the methods based on drop down value
 function changeColor(chosenOption){
     if(chosenOption.value==='red'){
         changeToRed();
@@ -77,18 +99,24 @@ function changeColor(chosenOption){
         changeToRandom();
     }
 }
+
+//Chnage the button color to Red
 function changeToRed(){
     for (let i = 0; i < choiceButtons.length; i++) {
         choiceButtons[i].classList.remove(choiceButtons[i].classList[1]);
         choiceButtons[i].classList.add('btn-danger');     
     }
 }
+
+//Chnage the button color to Green
 function changeToGreen(){
     for (let i = 0; i < choiceButtons.length; i++) {
         choiceButtons[i].classList.remove(choiceButtons[i].classList[1]);
         choiceButtons[i].classList.add('btn-success');     
     }
 }
+
+//Chnage the button color to Random
 function changeToRandom(){
     var lstOfchoiceButtonss = ['btn-primary','btn-warning','btn-danger','btn-success'];
     for (let i = 0; i < choiceButtons.length; i++) {
@@ -96,6 +124,10 @@ function changeToRandom(){
         choiceButtons[i].classList.add(lstOfchoiceButtonss[Math.floor(Math.random()*3)])
     }
 }
+
+/************* Change the color of the all buttons ***********/
+
+//Initialize variables
 document.querySelector('#blackjack-hit-button').addEventListener('click',blackjackHit);
 document.querySelector('#blackjack-stand-button').addEventListener('click',blackjackStand);
 document.querySelector('#blackjack-deal-bottun').addEventListener('click',blackjackDeal);
@@ -117,6 +149,8 @@ const DEALER = blackjackGame['dealer'];
 const cardSound = new Audio('sound/swish.m4a');
 const winSound = new Audio('sound/cash.mp3');
 const lossSound = new Audio('sound/aww.mp3');
+
+// Human choice button click function
 function blackjackHit(){
     if(!blackjackGame['isStand'] && YOU['score']<=21){
         blackjackGame['isHit']=true;
@@ -126,6 +160,8 @@ function blackjackHit(){
         showresult(YOU);
     }
 }
+
+//Bot Choice button click
 function blackjackStand(){
     if(blackjackGame['isHit'] && DEALER['score']<=21){
         while(DEALER['score']<=15){
@@ -142,6 +178,8 @@ function blackjackStand(){
         }
     }
 }
+
+// Deal button click to decide winner and display and reset game
 function blackjackDeal(){
     if(blackjackGame['turnsOver']){
         yourBoxImages = document.getElementById('yourBox').querySelectorAll('img');
@@ -165,10 +203,14 @@ function blackjackDeal(){
         blackjackGame['isHit']=false;
     }
 }
+
+//Pick the random cards
 function getRandomCard(){
     let randomNumber=Math.floor(Math.random()*13);
     return blackjackGame['card'][randomNumber];
 }
+
+//Update the core based on Human & Bot card selection
 function updateScore(card,activePlayer){
     if(card==='A'){
         if(activePlayer['score']+blackjackGame['cardMap'][card][1]<21){
@@ -180,6 +222,8 @@ function updateScore(card,activePlayer){
         return activePlayer['score']+=blackjackGame['cardMap'][card];
     }    
 }
+
+//Show the result after score and message decided
 function showresult(activePlayer){
     if(activePlayer['score']>21){
         document.getElementById(activePlayer['scorespan']).textContent='BUST!'
@@ -188,6 +232,8 @@ function showresult(activePlayer){
         document.getElementById(activePlayer['scorespan']).innerHTML=activePlayer['score'];
     }    
 }
+
+//Display the cards in human side and bot side
 function cardsDisplay(card,activePlayer){
     if(activePlayer['score']<21){
         let blackjackImage = document.createElement('img');
@@ -196,6 +242,8 @@ function cardsDisplay(card,activePlayer){
         cardSound.play();
     }
 }
+
+//Decode the winner based on selected cards by Human and Bot choices
 function decideWinnerBlackjack(){
     console.log('decide winner your score: '+YOU['score']);
     console.log('decide winner Dealer score: '+DEALER['score']); 
@@ -220,6 +268,8 @@ function decideWinnerBlackjack(){
     }
     return winner;
 }
+
+//Display the result messages on top of the game page
 function displayResultMessage(decideWin){
     let message, messageColor;
     if(decideWin==='Draw'){

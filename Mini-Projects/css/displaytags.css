@@ -14,7 +14,8 @@
     flex-direction: row;
 }
 .flex-box-blackjack-1, .flex-box-blackjack-2{
-    background: url('images/blackjack-background.jpg');
+    background-image: url('blackjack-background.jpg');
+    background-size: cover;
 }
 .flex-box-blackjack-1 div{
     border: 1px solid black;
