@@ -1,0 +1,15 @@
+.container{
+    flex-wrap: wrap;
+    flex-basis: 75%;
+    justify-content: center;
+    align-items: center;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.div{
+    padding: 10px;
+    justify-content: center;
+}

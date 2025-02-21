@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Display</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/displaytags.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Challenge 1: Your age in Days</h2>
+        <div class="flex-box-container">
+            <div>
+                <button class="btn btn-primary" onclick="ageInDays()">Click me</button>
+            </div>
+           <div>
+                <button class="btn btn-danger" onclick="reset()">Reset</button>
+           </div>            
+        </div>
+        <div class="flex-box-container">
+            <div id="flex-box-result"></div>
+        </div>       
+    </div>
+    <div class="container">
+        <h2>Challenge 2: Cat Generator</h2>
+            <button class="btn btn-success" onclick="createImage()">Generate Cat</button>
+           <div class="flex-box-container" id="flex-getn-cat">
+           </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Challenge 3: Rock, Paper, Scissors</h2>
+            <div class="flex-box-container" id="flex-gen-game">
+            <img id="rock" src="images/rock.jpg" height="150" width="150" onclick="rpsGame(this)">
+            <img id="paper" src="images/paper.jpg" height="150" width="150" onclick="rpsGame(this)">
+            <img id="scissors" src="images/scissors.jpg" height="150" width="150" onclick="rpsGame(this)">
+        </div>
+    </div>
+    <div class="container">
+        <h2>Challege 4: Change the color of all buttons</h2>
+        <div class="flex-box-container">
+            <select name="dropdownlist" id="random-btn-color" onchange="changeColor(this)">
+                <option value="random">Random</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+            </select>
+            <button class="btn btn-primary">Wee!</button>
+            <button class="btn btn-success">Google!</button>
+            <button class="btn btn-warning">Yahoo!</button>
+            <button class="btn btn-danger">Facebook!</button>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Challenge 5: Blakjack</h2>
+        <h3><span id="blackjack-result-disp">Let's play</span></h3>
+        <div class="flex-box-blackjack-1">
+            <div class="your-box" id="yourBox">
+                <h4 style="color: white;">You: <span style="color: white;" id="yourScore">0</span> </h4>
+            </div>
+            <div class="dealer-box" id="dealerBox">
+                <h4 style="color: white;">Dealer: <span style="color: white;" id="dealerScore">0</span></h4>
+            </div>
+        </div>
+        <div class="flex-box-blackjack-2">
+            <div>
+                <button class="btn-lg btn-primary mr-2" id="blackjack-hit-button">Hit</button>
+                <button class="btn-lg btn-warning mr-2" id="blackjack-stand-button">Stand</button>
+                <button class="btn-lg btn-danger mr-2" id="blackjack-deal-bottun">Deal</button>
+            </div>
+        </div>
+        <div class="flex-box-blackjack-3">
+            <table>
+                <tr>
+                    <td>Win</td>
+                    <td>Loss</td>
+                    <td>Draw</td>
+                </tr>
+                <tr>
+                    <td><span id="win">0</span></td>
+                    <td><span id="loss">0</span></td>
+                    <td><span id="draw">0</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <Script type="text/javascript" src="js/calculate.js" defer></Script>
+</body>
+</html>
